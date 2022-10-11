@@ -1,27 +1,29 @@
-// Write your code here
 import './index.css'
 
-const SearchItems = props => {
-  const {searchList, searchClick} = props
-  const {suggestion} = searchList
+const SuggestionItem = props => {
+  const {suggestionDetails, updateSearchInput} = props
+  const {suggestion} = suggestionDetails
 
-  const onSearch = () => {
-    searchClick(suggestion)
+  const onClickSuggestion = () => {
+    updateSearchInput(suggestion)
   }
 
   return (
-    <li>
-      <div className="suggestion-bar">
-        <p>{suggestion}</p>
+    <li className="suggestion-item">
+      <p className="suggestion-text">{suggestion}</p>
+      <button
+        type="button"
+        className="arrow-button"
+        onClick={onClickSuggestion}
+      >
         <img
           src="https://assets.ccbp.in/frontend/react-js/diagonal-arrow-left-up.png"
           alt="arrow"
           className="arrow"
-          onClick={onSearch}
         />
-      </div>
+      </button>
     </li>
   )
 }
 
-export default SearchItems
+export default SuggestionItem
